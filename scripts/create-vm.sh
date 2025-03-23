@@ -17,8 +17,14 @@ ADD_STORAGE=112G
 
 if [ "$NAME" = "okd-bootstrap" ]; then
    IGNITION=bootstrap
-else
+elif [ "$NAME" = "okd-master-0" ]; then
    IGNITION=master
+elif [ "$NAME" = "okd-master-1" ]; then
+   IGNITION=master
+elif [ "$NAME" = "okd-master-2" ]; then
+   IGNITION=master
+else
+   IGNITION=worker
 fi
 
 echo "args: -fw_cfg name=opt/com.coreos/config,file=$PATH/ignitions/$IGNITION.ign" >> /etc/pve/qemu-server/$ID.conf
